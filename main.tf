@@ -17,7 +17,8 @@ resource "aws_instance" "myec2" {
   ami           = "ami-079db87dc4c10ac91 "
   instance_type = "t2.micro"
   vpc_security_group_ids=[aws_security_group.web-sg.id]
-  key_name="tf-key-pair"  tags={
+  key_name="tf-key-pair"
+tags={
  Name="web-server"
 }
 user_data= <<-EOF
@@ -36,7 +37,8 @@ ingress {
  to_port=80
 protocol="tcp"
 cidr_blocks= ["0.0.0.0/0"]
-}  ingress {
+}
+ingress {
  from_port=22
  to_port=22
 protocol="tcp"
@@ -47,7 +49,6 @@ egress {
  to_port=0
 protocol="-1"
 cidr_blocks= ["0.0.0.0/0"]
-}
 }
 resource "aws_key_pair" "tf-key-pair-1" {
 key_name = "tf-key-pair"
