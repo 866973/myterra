@@ -30,14 +30,14 @@ touch index.html
 echo "hello from Terraform" > index.html
 EOF
 }
-resource "aws_security_group" "web-sg"
-{
+resource "aws_security_group" "web-sg"{
  name="web-sg"
 ingress {
  from_port=80
  to_port=80
 protocol="tcp"
 cidr_blocks= ["0.0.0.0/0"]
+}
 }
 ingress {
  from_port=22
